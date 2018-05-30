@@ -15,7 +15,7 @@ def main():
         for ch in word:
             if ch in alphabet:
                 index = alphabet.index(ch)
-                print(alphabet[index+2],end='')
+                print(alphabet[index+2],end="")
             else:
                 print(ch,end='')
     print()
