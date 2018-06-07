@@ -18,7 +18,7 @@ def main():
             else:
                 aList.append(ch)
 
-    #for word in aList:
+    for word in aList:
         print(aList, end='')
 
 '''
