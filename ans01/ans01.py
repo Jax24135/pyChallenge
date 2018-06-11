@@ -1,61 +1,36 @@
 #URL: http://www.pythonchallenge.com/pc/def/map.html
 
-from string import maketrans
+import string
 
 
 def main():
-    phrase = "g fmnc wms bgblr rpylqjyrc gr zw fylb. rfyrq ufyr amknsrcpq ypc dmp. bmgle gr gl zw fylb gq glcddgagclr ylb rfyr'q ufw rfgq rcvr gq qm jmle. sqgle qrpgle.kyicrpylq() gq pcamkkclbcb. lmu ynnjw ml rfc spj."
 
-    alphabetORIG = string.ascii_lowercase*2
+    #import URL phrase to translate
+    #phrase = "g fmnc wms bgblr rpylqjyrc gr zw fylb. rfyrq ufyr amknsrcpq ypc dmp. bmgle gr gl zw fylb gq glcddgagclr ylb rfyr'q ufw rfgq rcvr gq qm jmle. sqgle qrpgle.kyicrpylq() gq pcamkkclbcb. lmu ynnjw ml rfc spj."
+    phrase = "map"
 
+    #create a LIST based on the alphabet (x2 to catch first two letters on repeat)
+    alphaORIG = string.ascii_lowercase*2
 
-    alphabetNEW = ''.join(alphabetORIG)
-
-    alphabetORIG = alphabetORIG[:26]
-    alphabetNEW = alphabetNEW[2:28]
-
-
-    #print(alphabetORIG)
-    #print(alphabetNEW)
-
-    rosettaStone = string.maketrans(alphabetORIG,alphabetNEW)
-
-    phrase.translate(rosettaStone)
+    #make a STRING out of a LIST
+    alphaNEW = ''.join(alphaORIG)
 
 
+    #cut variables to 26 letters so mapping works
+    # alphaNEW is 2 letters ahead of alphaORIG (a >> c, b >> d)
+    alphaORIG = alphaORIG[:26]
+    alphaNEW = alphaNEW[2:28]
 
-'''
-    for word in phrase:
-        for ch in word:
-            if ch.isalnum():
-                #tmpValue = ord(ch) + 2
-                aList.append(chr(ord(ch)+2))
-            else:
-                aList.append(ch)
 
-    for word in aList:
-        print(aList, end='')
-'''
+    #DEBUG --confirm it works
+    #print(alphaORIG)
+    #print(alphaNEW)
 
-'''
-def main2():
 
-    phrase = "g fmnc wms bgblr rpylqjyrc gr zw fylb. rfyrq ufyr amknsrcpq ypc dmp. bmgle gr gl zw fylb gq glcddgagclr ylb rfyr'q ufw rfgq rcvr gq qm jmle. sqgle qrpgle.kyicrpylq() gq pcamkkclbcb. lmu ynnjw ml rfc spj."
-    
-    #phrase = "map"
+    #use MAKETRANS to create mapped translation object
+    rosaStone = str.maketrans(alphaORIG,alphaNEW)
 
-    alphabet = list(string.ascii_lowercase)*2
+    #use rosettaStone (ie rosaStone) to print decyphered text
+    print(phrase.translate(rosaStone))
 
-    print()
-
-    for word in phrase:
-        for ch in word:
-            if ch in alphabet:
-                index = alphabet.index(ch)
-                print(alphabet[index+2],end="")
-            else:
-                print(ch,end='')
-    print()
-
-'''
 main()
