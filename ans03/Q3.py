@@ -1,16 +1,37 @@
 #URL http://www.pythonchallenge.com/pc/def/equality.html
 
-import re
+import re, urllib.request
 
-inFile = open("clean.dat",'r')
+html = urllib.request.urlopen("http://www.pythonchallenge.com/pc/def/equality.html").read().decode()
+data = re.findall("<!--(.*?)-->", html, re.DOTALL)[-1]
 
-result=''
+result = re.findall("""[^A-Z][A-Z]{3}([a-z])[A-Z]{3}[^A-Z]""", data)
+result = ''.join(result)
 
-for line in inFile:
-    m = re.search(r"[A-Z]{3}[a-z][A-Z]{3}", line).group(0)
-    m = m[3:4]
-    result+=m
-    m = ''
+#inFile = open("clean.dat",'r')
 
 
-# [A-ZA-ZA-Za-zA-ZA-ZA-Z]
+#line = inFile.read()
+#line = "aDDDzBBBc"
+
+print("\nAnswer is ")
+print(result)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#print("".join(re.findall("[^A-Z][A-Z]{3}([a-z])[A-Z]{3}[^A-Z]", line)))
